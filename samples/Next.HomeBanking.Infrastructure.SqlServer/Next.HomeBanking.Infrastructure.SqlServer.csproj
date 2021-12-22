@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+      <IsPackable>false</IsPackable>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\data\Next.Data.DbUp.SqlServer\Next.Data.DbUp.SqlServer.csproj" />
+        <ProjectReference Include="..\Next.HomeBanking.Domain\Next.HomeBanking.Domain.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <EmbeddedResource Include="Scripts\*.sql">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </EmbeddedResource>
+    </ItemGroup>
+    
+</Project>

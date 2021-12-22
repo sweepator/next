@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    
+    <ItemGroup>
+        <ProjectReference Include="..\..\cqrs\Next.Cqrs\Next.Cqrs.csproj" />
+        <ProjectReference Include="..\Next.Application\Next.Application.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" />
+    </ItemGroup>
+</Project>

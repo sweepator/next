@@ -1,0 +1,27 @@
+mode: auto
+silent: false
+branchName: "issue-${issue.number}/${issue.title,}"
+autoCloseIssue: true
+gitSafeReplacementChar: "-"
+defaultBranch: develop
+copyIssueDescriptionToPR: true
+copyIssueLabelsToPR: true
+copyIssueAssigneeToPR: true
+copyIssueProjectsToPR: true
+copyIssueMilestoneToPR: true
+commentMessage: 'Branch ${branchName} created for issue: ${issue.title}'
+branches:
+  - label: enhancement
+    name: develop
+    prefix: feature/
+  - label: bug
+    prefix: bugfix/
+    name: develop
+  - label: hotfix
+    prefix: hotfix/
+    name: master
+  - label: chore
+    prefix: chore/
+    name: develop
+  - label: "*"
+    skip: true
