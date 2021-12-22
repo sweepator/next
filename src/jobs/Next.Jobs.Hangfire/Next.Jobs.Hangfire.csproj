@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<PackageReference Include="Hangfire.Core" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\abstractions\Next.Abstractions.Jobs\Next.Abstractions.Jobs.csproj" />
+	</ItemGroup>
+
+</Project>

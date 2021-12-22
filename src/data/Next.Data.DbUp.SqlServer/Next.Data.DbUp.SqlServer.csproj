@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Log\Next.Abstractions.Log.csproj" />
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Data\Next.Abstractions.Data.csproj" />
+    <ProjectReference Include="..\Next.Data.Health\Next.Data.Health.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+		<PackageReference Include="dbup-sqlserver" />
+  </ItemGroup>
+
+</Project>

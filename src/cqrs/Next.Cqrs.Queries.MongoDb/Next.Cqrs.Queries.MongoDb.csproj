@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\data\Next.Data.MongoDb\Next.Data.MongoDb.csproj" />
+    <ProjectReference Include="..\Next.Cqrs\Next.Cqrs.csproj" />
+  </ItemGroup>
+</Project>

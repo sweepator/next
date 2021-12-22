@@ -1,0 +1,74 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    
+    <PropertyGroup>
+        <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(MSBuildThisFileName).xml</DocumentationFile>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <ProjectReference Include="..\..\src\abstractions\Next.Abstractions.EventSourcing\Next.Abstractions.EventSourcing.csproj" />
+        <ProjectReference Include="..\..\src\application\Next.Application.Log\Next.Application.Log.csproj" />
+        <ProjectReference Include="..\..\src\application\Next.Application.Validation\Next.Application.Validation.csproj" />
+        <ProjectReference Include="..\..\src\bus\Next.Bus.Json\Next.Bus.Json.csproj" />
+        <ProjectReference Include="..\..\src\bus\Next.Bus.Kafka\Next.Bus.Kafka.csproj" />
+        <ProjectReference Include="..\..\src\bus\Next.Bus.MassTransit\Next.Bus.MassTransit.csproj" />
+        <ProjectReference Include="..\..\src\bus\Next.Bus.Redis\Next.Bus.Redis.csproj" />
+        <ProjectReference Include="..\..\src\cqrs\Next.Cqrs.Integration.Kafka\Next.Cqrs.Integration.Kafka.csproj" />
+        <ProjectReference Include="..\..\src\cqrs\Next.Cqrs.MassTransit\Next.Cqrs.MassTransit.csproj" />
+        <ProjectReference Include="..\..\src\cqrs\Next.Cqrs.Queries.EntityFramework\Next.Cqrs.Queries.EntityFramework.csproj" />
+        <ProjectReference Include="..\..\src\cqrs\Next.Cqrs.Queries.MongoDb\Next.Cqrs.Queries.MongoDb.csproj" />
+        <ProjectReference Include="..\..\src\cqrs\Next.Cqrs.Queries.SqlServer\Next.Cqrs.Queries.SqlServer.csproj" />
+        <ProjectReference Include="..\..\src\cqrs\Next.Cqrs\Next.Cqrs.csproj" />
+        <ProjectReference Include="..\..\src\eventsourcing\Next.EventSourcing.Json\Next.EventSourcing.Json.csproj" />
+        <ProjectReference Include="..\..\src\eventsourcing\Next.EventSourcing.MongoDb\Next.EventSourcing.MongoDb.csproj" />
+        <ProjectReference Include="..\..\src\eventsourcing\Next.EventSourcing.SqlServer\Next.EventSourcing.SqlServer.csproj" />
+        <ProjectReference Include="..\..\src\jobs\Next.Jobs.Hangfire\Next.Jobs.Hangfire.csproj" />
+        <ProjectReference Include="..\..\src\mapper\Next.Mapper.AutoMapper\Next.Mapper.AutoMapper.csproj" />
+        <ProjectReference Include="..\..\src\validation\Next.Application.Validation.Fluent\Next.Application.Validation.Fluent.csproj" />
+        <ProjectReference Include="..\..\src\web\Next.Web.Application.Graphql\Next.Web.Application.Graphql.csproj" />
+        <ProjectReference Include="..\..\src\web\Next.Web.Application\Next.Web.Application.csproj" />
+        <ProjectReference Include="..\..\src\web\Next.Web.Hypermedia\Next.Web.Hypermedia.csproj" />
+        <ProjectReference Include="..\..\src\web\Next.Web.Jobs.Hangfire\Next.Web.Jobs.Hangfire.csproj" />
+        <ProjectReference Include="..\..\src\web\Next.Web.Log.Serilog\Next.Web.Log.Serilog.csproj" />
+        <ProjectReference Include="..\..\src\web\Next.Web.OpenApi\Next.Web.OpenApi.csproj" />
+        <ProjectReference Include="..\..\src\web\Next.Web.Trace\Next.Web.Trace.csproj" />
+        <ProjectReference Include="..\..\src\web\Next.Web\Next.Web.csproj" />
+        <ProjectReference Include="..\Next.HomeBanking.Application\Next.HomeBanking.Application.csproj" />
+        <ProjectReference Include="..\Next.HomeBanking.Infrastructure.EntityFramework\Next.HomeBanking.Infrastructure.EntityFramework.csproj" />
+        <ProjectReference Include="..\Next.HomeBanking.Infrastructure.FluentValidation\Next.HomeBanking.Infrastructure.FluentValidation.csproj" />
+        <ProjectReference Include="..\Next.HomeBanking.Infrastructure.SqlServer\Next.HomeBanking.Infrastructure.SqlServer.csproj" />
+        <ProjectReference Include="..\Next.HomeBanking.Messaging\Next.HomeBanking.Messaging.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AspNetCore.HealthChecks.SqlServer" />
+        <PackageReference Include="AspNetCore.HealthChecks.NpgSql" />
+        <PackageReference Include="AspNetCore.HealthChecks.Redis" />
+        <PackageReference Include="AspNetCore.HealthChecks.MongoDb" />
+        <PackageReference Include="AspNetCore.HealthChecks.Kafka" />
+        <PackageReference Include="Hangfire.AspNetCore" />
+        <PackageReference Include="Hangfire.Core" />
+        <PackageReference Include="Hangfire.SqlServer" />
+        <PackageReference Include="HotChocolate.AspNetCore" />
+        <PackageReference Include="MassTransit.AspNetCore" />
+        <PackageReference Include="MassTransit.RabbitMQ" />
+        <PackageReference Include="Serilog.AspNetCore" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Update="appsettings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="appsettings.local.json">
+            <DependentUpon>appsettings.json</DependentUpon>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Content Update="appsettings.development.json">
+            <DependentUpon>appsettings.json</DependentUpon>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Logs\catalog api-20210210.json" />
+    </ItemGroup>
+</Project>

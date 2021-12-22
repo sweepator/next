@@ -1,0 +1,87 @@
+name: Publish Packages
+
+on:
+  workflow_dispatch:
+
+env:
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
+  NUGET_SOURCE_URL: https://nuget.pkg.github.com/${{ github.repository_owner }}
+  NUGET_SOURCE_API_KEY: ${{ github.token }}
+
+jobs:
+  publish_packages:
+    name: Publish packages
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Fetch all history for all tags and branches
+      uses: actions/checkout@v2.4.0
+      with:
+        fetch-depth: 0
+
+    - name: Setup dotnet core
+      uses: actions/setup-dotnet@v1.9.0
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Install gitversion
+      uses: gittools/actions/gitversion/setup@v0.9.11
+      with:
+        versionSpec: 5.7.0
+
+    - name: Use gitversion
+      id:   gitversion
+      uses: gittools/actions/gitversion/execute@v0.9.11
+
+    - name: Set environment variables for release
+      if: startsWith(github.ref, 'refs/heads/master')
+      run: |
+        echo "RELEASE_VERSION=${{ steps.gitversion.outputs.MajorMinorPatch }}" >> $GITHUB_ENV
+
+    - name: Set environment variables for pre-release
+      if: startsWith(github.ref, 'refs/heads/release')
+      run: |
+        echo "RELEASE_VERSION=${{ steps.gitversion.outputs.FullSemVer }}" >> $GITHUB_ENV
+      
+    - name: Restore
+      run: dotnet restore
+    
+    - name: Build
+      run: dotnet build /p:Version=${{ steps.gitversion.outputs.AssemblySemFileVer }} /p:AssemblyVersion=${{ steps.gitversion.outputs.AssemblySemFileVer }} /p:FileVersion=${{ steps.gitversion.outputs.AssemblySemFileVer }} /p:InformationalVersion=${{ steps.gitversion.outputs.Sha }} --configuration Release --no-restore
+
+    - name: Create nuget packages 
+      run: dotnet pack --configuration Release /p:PackageVersion=${{ steps.gitversion.outputs.FullSemVer }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+
+    - name: Upload nuget artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: nupkg
+        path: ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.symbols.nupkg
+
+    - name: Publish nuget packages
+      run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/**/*.symbols.nupkg -s ${{ env.NUGET_SOURCE_URL }} -k ${{ env.NUGET_SOURCE_API_KEY }} --skip-duplicate
+
+    - name: Zip nuget packages
+      run: |
+          zip --junk-paths nupkg ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.symbols.nupkg
+
+    - name: Tar nuget packages
+      run: |
+          tar -cvf nupkg.tar.gz -C ${{ env.PACKAGE_OUTPUT_DIRECTORY }} .
+    
+    - name: Upload nuget.zip
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: nupkg.zip
+        asset_name: nupkg (zip)
+        tag: ${{ env.RELEASE_VERSION }}
+    
+    - name: Upload nuget.tar
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: nupkg.tar.gz
+        asset_name: nupkg (tar.gz)
+        tag: ${{ env.RELEASE_VERSION }}

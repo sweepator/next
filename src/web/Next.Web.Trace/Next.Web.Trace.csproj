@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Next.Web\Next.Web.csproj" />
+		<ProjectReference Include="..\..\abstractions\Next.Abstractions.Trace\Next.Abstractions.Trace.csproj" />
+	</ItemGroup>
+
+</Project>

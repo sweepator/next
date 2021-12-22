@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Next.Application.Cqrs.SqlServer</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Mapper\Next.Abstractions.Mapper.csproj" />
+    <ProjectReference Include="..\..\data\Next.Data.DbUp.SqlServer\Next.Data.DbUp.SqlServer.csproj" />
+    <ProjectReference Include="..\..\data\Next.Data.SqlServer\Next.Data.SqlServer.csproj" />
+    <ProjectReference Include="..\Next.Cqrs\Next.Cqrs.csproj" />
+  </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Dapper" />
+    </ItemGroup>
+</Project>

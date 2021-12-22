@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <ItemGroup>
+        <ProjectReference Include="..\..\bus\Next.Bus.MassTransit\Next.Bus.MassTransit.csproj" />
+        <ProjectReference Include="..\Next.Cqrs\Next.Cqrs.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="MassTransit" />
+    </ItemGroup>
+</Project>
