@@ -7,11 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2021-12-22
+
 ## [0.3.0] - 2021-12-20
 
 ## [0.2.0] - 2021-12-17
 
-[Unreleased]: https://github.com/cpilao/Next/compare/0.3.0...HEAD
+[Unreleased]: https://github.com/sweepator/next/compare/0.2.0...HEAD
+
+[0.2.0]: https://github.com/sweepator/next/compare/0.3.0...0.2.0
 
 [0.3.0]: https://github.com/cpilao/Next/compare/0.2.0...0.3.0
 
