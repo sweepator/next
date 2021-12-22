@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Health\Next.Abstractions.Health.csproj" />
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Data\Next.Abstractions.Data.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+</Project>

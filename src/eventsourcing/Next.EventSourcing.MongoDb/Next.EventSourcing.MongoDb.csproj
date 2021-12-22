@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    
+  <ItemGroup>
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.EventSourcing\Next.Abstractions.EventSourcing.csproj" />
+    <ProjectReference Include="..\..\data\Next.Data.MongoDb\Next.Data.MongoDb.csproj" />
+  </ItemGroup>
+    
+  <ItemGroup>
+      <PackageReference Include="MongoDB.Driver" />
+  </ItemGroup>
+</Project>

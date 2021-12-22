@@ -1,0 +1,79 @@
+# Gitflow
+mode: MainLine
+tag-prefix: ''
+continuous-delivery-fallback-tag: '' # ci
+major-version-bump-message: "^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\\([\\w\\s]*\\))?(!:|:.*\\n\\n((.+\\n)+\\n)?BREAKING CHANGE:\\s.+)"
+minor-version-bump-message: "^(feat)(\\([\\w\\s]*\\))?:"
+patch-version-bump-message: "^(build|chore|ci|docs|fix|perf|refactor|revert|style|test)(\\([\\w\\s]*\\))?:"
+no-bump-message: "^(none|skip)(\\([\\w\\s]*\\))?:"
+commit-message-incrementing: Enabled
+branches:
+  main:
+    regex: ^master$|^main$
+    tag: ''
+    increment: Patch
+    prevent-increment-of-merged-branch-version: true
+    source-branches:
+    - develop
+    - release
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: true
+  develop:
+    regex: ^dev(elop)?(ment)?$
+    tag: alpha
+    increment: Minor
+    prevent-increment-of-merged-branch-version: false
+    tracks-release-branches: true
+  release:
+    regex: ^release?[/-]
+    tag: beta
+    increment: None
+    prevent-increment-of-merged-branch-version: true
+    source-branches:
+    - develop
+    - main
+    - release
+    is-release-branch: true
+  feature:
+    regex: ^features?[/-]
+    tag: useBranchName
+    increment: Inherit
+    prevent-increment-of-merged-branch-version: false
+    source-branches:
+    - develop
+    - main
+    - release
+    - feature
+    - hotfix
+  pull-request:
+    tag: '' # PullRequest
+    increment: Inherit
+    prevent-increment-of-merged-branch-version: false
+    tag-number-pattern: '[/-](?<number>\d+)'
+    regex: ^(pull|pull\-requests|pr)[/-]
+    source-branches:
+    - develop
+    - main
+    - release
+    - feature
+    - hotfix
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: false
+  hotfix:
+    regex: ^hotfix(es)?[/-]
+    tag: beta
+    increment: Patch
+    prevent-increment-of-merged-branch-version: false
+    source-branches:
+    - develop
+    - main
+    tracks-release-branches: false
+    is-release-branch: false
+    is-mainline: false
+ignore:
+  sha: []
+commit-date-format: yyyy-MM-dd
+merge-message-formats: {}
+update-build-number: true

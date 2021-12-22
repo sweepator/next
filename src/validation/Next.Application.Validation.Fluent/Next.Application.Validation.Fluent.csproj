@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\application\Next.Application.Validation\Next.Application.Validation.csproj" />
+    <ProjectReference Include="..\Next.Validation.Fluent\Next.Validation.Fluent.csproj" />
+  </ItemGroup>
+</Project>

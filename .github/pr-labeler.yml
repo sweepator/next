@@ -1,0 +1,5 @@
+enhancement: ["feat/*", "feature/*"]
+bug: ["bugfix/*"]
+hotfix: ["hotfix/*"]
+chore: ["chore/*"]
+documentation: ["docs/*"]
