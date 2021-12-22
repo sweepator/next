@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Mapper\Next.Abstractions.Mapper.csproj" />
+    <ProjectReference Include="..\Next.Application\Next.Application.csproj" />
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Jobs\Next.Abstractions.Jobs.csproj" />
+  </ItemGroup>
+</Project>

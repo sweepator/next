@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Log\Next.Abstractions.Log.csproj" />
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Data\Next.Abstractions.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+		<PackageReference Include="dbup-postgresql" />
+	</ItemGroup>
+
+</Project>

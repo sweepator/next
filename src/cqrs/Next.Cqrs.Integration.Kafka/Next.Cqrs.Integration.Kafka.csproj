@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>Next.Cqrs.Integration.Kafka</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CloudNative.CloudEvents.Kafka" />
+        <PackageReference Include="CloudNative.CloudEvents.SystemTextJson" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Next.Cqrs\Next.Cqrs.csproj" />
+    </ItemGroup>
+
+</Project>

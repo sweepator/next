@@ -1,0 +1,22 @@
+<Project>
+ <PropertyGroup>
+  <NeutralLanguage>en-GB</NeutralLanguage>
+  <Copyright>Copyright © CPilao 2020</Copyright>
+  <Authors>Carlos Pilão</Authors>
+  <Owners>Carlos Pilão</Owners>
+  <TargetFramework>net6.0</TargetFramework>
+  <OutputType>Library</OutputType>
+  <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  <IsPackable>true</IsPackable>
+  <PackageProjectUrl>https://github.com/sweepator/next</PackageProjectUrl>
+  <RepositoryUrl>https://github.com/sweepator/next</RepositoryUrl>
+  <RepositoryType>git</RepositoryType>
+  <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  <IncludeSymbols>true</IncludeSymbols>
+  <LangVersion>10.0</LangVersion>
+  <OutputType>Library</OutputType>
+  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  <NoWarn>$(NoWarn);1701;1702;1705;1591</NoWarn>
+ </PropertyGroup>
+</Project> 

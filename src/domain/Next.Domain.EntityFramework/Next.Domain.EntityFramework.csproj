@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\abstractions\Next.Abstractions.Mapper\Next.Abstractions.Mapper.csproj" />
+	  <ProjectReference Include="..\..\abstractions\Next.Abstractions.Domain\Next.Abstractions.Domain.csproj" />
+	</ItemGroup>
+
+</Project>

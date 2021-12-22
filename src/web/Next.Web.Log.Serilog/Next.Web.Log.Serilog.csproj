@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<PackageReference Include="Serilog.AspNetCore" />
+		<PackageReference Include="Serilog.Expressions" />
+		<PackageReference Include="Serilog.Sinks.ElasticSearch" />
+		<PackageReference Include="Serilog.Enrichers.Thread" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\log\Next.Log.Serilog\Next.Log.Serilog.csproj" />
+	  <ProjectReference Include="..\..\abstractions\Next.Abstractions.Log\Next.Abstractions.Log.csproj" />
+	  <ProjectReference Include="..\..\Next.Core\Next.Core.csproj" />
+	</ItemGroup>
+	
+</Project>

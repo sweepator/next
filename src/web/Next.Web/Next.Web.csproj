@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">   
+    
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" />
+    </ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Extensions\" />
+	  <Folder Include="Filters" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\abstractions\Next.Abstractions.Serialization\Next.Abstractions.Serialization.csproj" />
+	</ItemGroup>
+    
+</Project>

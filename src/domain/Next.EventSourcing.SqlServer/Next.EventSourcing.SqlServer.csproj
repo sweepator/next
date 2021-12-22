@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\abstractions\Next.Abstractions.Domain\Next.Abstractions.Domain.csproj" />
+	  <ProjectReference Include="..\..\abstractions\Next.Abstractions.EventSourcing\Next.Abstractions.EventSourcing.csproj" />
+	  <ProjectReference Include="..\..\data\Next.Data.DbUp.SqlServer\Next.Data.DbUp.SqlServer.csproj" />
+	  <ProjectReference Include="..\..\data\Next.Data.Health\Next.Data.Health.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Scripts\" />
+	  <Folder Include="Extensions\" />
+	</ItemGroup>
+    
+    <ItemGroup>
+        <EmbeddedResource Include="Scripts\*.sql">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </EmbeddedResource>
+    </ItemGroup>
+    
+</Project>

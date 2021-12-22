@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <PackageReference Include="StackExchange.Redis" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\abstractions\Next.Abstractions.Bus\Next.Abstractions.Bus.csproj" />
+      <ProjectReference Include="..\..\abstractions\Next.Abstractions.Serialization\Next.Abstractions.Serialization.csproj" />
+      <ProjectReference Include="..\..\data\Next.Data.Redis\Next.Data.Redis.csproj" />
+    </ItemGroup>
+    
+</Project>

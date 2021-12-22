@@ -1,0 +1,76 @@
+name: Publish Pre-Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build_test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+        
+        - name: Buid and Test
+          uses: convictional/trigger-workflow-and-wait@v1.5.0
+          with:
+            owner: cpilao
+            repo: Next
+            github_token: ${{ secrets.WORKFLOWS_TOKEN }}
+            workflow_file_name: build-test.yml
+            ref: ${{ github.ref}}
+            wait_workflow: true
+
+  publish_prerelease:
+    name: Publish pre-release
+    needs: build_test
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Fetch all history for all tags and branches
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v0.9.11
+        with:
+          versionSpec: 5.7.0
+
+      - name: Initialize git configuration
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email noreply@github.com
+
+      - name: Use GitVersion
+        id:   gitversion
+        uses: gittools/actions/gitversion/execute@v0.9.11
+
+      - name: Set environment variables for release
+        run: |
+          echo "RELEASE_VERSION=${{ steps.gitversion.outputs.FullSemVer }}" >> $GITHUB_ENV
+
+      - uses: release-drafter/release-drafter@v5
+        name: Create pre-release notes
+        with:
+          name: ${{ env.RELEASE_VERSION }}
+          version: ${{ env.RELEASE_VERSION }}
+          tag: ${{ env.RELEASE_VERSION }}
+          publish: true
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+  publish_packages:
+    name: Publish packages
+    needs: publish_prerelease
+    runs-on: ubuntu-latest
+    steps:
+        
+      - name: Publish pre-release packages
+        uses: convictional/trigger-workflow-and-wait@v1.5.0
+        with:
+          owner: cpilao
+          repo: Next
+          github_token: ${{ secrets.WORKFLOWS_TOKEN }}
+          workflow_file_name: publish-packages.yml
+          ref: ${{ github.ref}}
+          wait_workflow: false

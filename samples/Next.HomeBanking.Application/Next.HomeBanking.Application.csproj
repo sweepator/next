@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    
+    <PropertyGroup>
+      <RootNamespace>Next.HomeBanking.Application</RootNamespace>
+      <IsPackable>false</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\application\Next.Application.Jobs\Next.Application.Jobs.csproj" />
+      <ProjectReference Include="..\..\src\cqrs\Next.Cqrs\Next.Cqrs.csproj" />
+      <ProjectReference Include="..\Next.HomeBanking.Domain\Next.HomeBanking.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

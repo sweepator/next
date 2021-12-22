@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.EventSourcing\Next.Abstractions.EventSourcing.csproj" />
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Serialization\Next.Abstractions.Serialization.csproj" />
+  </ItemGroup>
+</Project>

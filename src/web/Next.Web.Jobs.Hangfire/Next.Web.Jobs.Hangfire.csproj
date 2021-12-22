@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<ItemGroup>
+		<PackageReference Include="Hangfire.AspNetCore" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\jobs\Next.Jobs.Hangfire\Next.Jobs.Hangfire.csproj" />
+	</ItemGroup>
+
+</Project>
