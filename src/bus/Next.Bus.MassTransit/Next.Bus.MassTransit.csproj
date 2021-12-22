@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <RootNamespace>Next.Bus.MassTransit</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\abstractions\Next.Abstractions.Bus\Next.Abstractions.Bus.csproj" />
+      <ProjectReference Include="..\..\abstractions\Next.Abstractions.Serialization\Next.Abstractions.Serialization.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="MassTransit.AspNetCore" />
+    </ItemGroup>
+
+</Project>

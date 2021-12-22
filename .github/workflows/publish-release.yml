@@ -1,0 +1,119 @@
+name: Publish Release
+
+env:
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}/output
+  NUGET_SOURCE_URL: https://nuget.pkg.github.com/cpilao/index.json
+  NUGET_SOURCE_API_KEY: ${{ github.token }}
+
+on:
+  pull_request:
+    branches:
+      - master
+    types:
+      - closed
+
+jobs:
+  publish_release:
+    name: Publish release
+    runs-on: ubuntu-latest
+    if: contains(github.ref, 'master')
+    steps:
+
+      - name: Fetch all history for all tags and branches
+        uses: actions/checkout@v2.4.0
+      
+      - name: Initialize git configuration
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email noreply@github.com
+      
+      - name: Extract version from release branch name
+        if: startsWith(github.head_ref, 'release/')
+        run: |
+          BRANCH_NAME="${{ github.head_ref }}"
+          VERSION=${BRANCH_NAME#release/}
+          echo "RELEASE_VERSION=$VERSION" >> $GITHUB_ENV
+      
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1.9.0
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build /p:Version=${{ env.RELEASE_VERSION }} /p:AssemblyVersion=${{ env.RELEASE_VERSION }} /p:FileVersion=${{ env.RELEASE_VERSION}} /p:InformationalVersion=${{ env.RELEASE_VERSION }} --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test /p:CollectCoverage=true /p:CoverletOutput="../" /p:MergeWith="../coverage.xml" /maxcpucount:1 /p:CoverletOutputFormat=opencover
+
+      - name: CodeCoverage
+        uses: codecov/codecov-action@v2.1.0
+        with:
+          token: ${{ secrets.CODECOVERAGE_TOKEN }}
+      
+      - name: Create tag
+        run: |
+          git tag -a ${{ env.RELEASE_VERSION}} -m "skip(): Created tag ${{ env.RELEASE_VERSION}}"
+          git push --set-upstream origin ${{ env.RELEASE_VERSION}}
+
+      - uses: release-drafter/release-drafter@v5
+        name: Create release notes
+        with:
+          name: ${{ env.RELEASE_VERSION }}
+          version: ${{ env.RELEASE_VERSION }}
+          tag: ${{ env.RELEASE_VERSION }}
+          publish: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Merge release to develop
+        uses: devmasx/merge-branch@master
+        with:
+          type: now
+          from_branch: ${{ github.head_ref }}
+          target_branch: develop
+          github_token: ${{ github.token }}
+          message: | 
+            skip(): This merges the release branch back into develop
+        
+      - name: Delete release branch
+        run:  |
+          git push origin --delete ${{ github.head_ref }}
+
+      - name: Create nuget packages 
+        run: dotnet pack --configuration Release /p:PackageVersion=${{ env.RELEASE_VERSION }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+
+      - name: Upload nuget artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: nupkg
+          path: ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.symbols.nupkg
+
+      - name: Publish nuget packages
+        run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/**/*.symbols.nupkg -s ${{ env.NUGET_SOURCE_URL }} -k ${{ env.NUGET_SOURCE_API_KEY }} --skip-duplicate
+
+      - name: Zip nuget packages
+        run: |
+            zip --junk-paths nupkg ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.symbols.nupkg
+
+      - name: Tar nuget packages
+        run: |
+            tar -cvf nupkg.tar.gz -C ${{ env.PACKAGE_OUTPUT_DIRECTORY }} .
+      
+      - name: Upload nuget.zip
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: nupkg.zip
+          asset_name: nupkg (zip)
+          tag: ${{ env.RELEASE_VERSION }}
+      
+      - name: Upload nuget.tar
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: nupkg.tar.gz
+          asset_name: nupkg (tar.gz)
+          tag: ${{ env.RELEASE_VERSION }}

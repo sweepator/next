@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="HotChocolate.AspNetCore" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\..\application\Next.Application\Next.Application.csproj" />
+      <ProjectReference Include="..\..\cqrs\Next.Cqrs\Next.Cqrs.csproj" />
+    </ItemGroup>
+
+</Project>

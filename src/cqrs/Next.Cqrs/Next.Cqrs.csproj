@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    
+  <PropertyGroup>
+    <RootNamespace>Next.Cqrs</RootNamespace>
+  </PropertyGroup>
+    
+  <ItemGroup>
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Bus\Next.Abstractions.Bus.csproj" />
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Data\Next.Abstractions.Data.csproj" />
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Domain\Next.Abstractions.Domain.csproj" />
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.EventSourcing\Next.Abstractions.EventSourcing.csproj" />
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Health\Next.Abstractions.Health.csproj" />
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Jobs\Next.Abstractions.Jobs.csproj" />
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Serialization\Next.Abstractions.Serialization.csproj" />
+    <ProjectReference Include="..\..\application\Next.Application.Jobs\Next.Application.Jobs.csproj" />
+    <ProjectReference Include="..\..\application\Next.Application\Next.Application.csproj" />
+  </ItemGroup>
+    
+</Project>

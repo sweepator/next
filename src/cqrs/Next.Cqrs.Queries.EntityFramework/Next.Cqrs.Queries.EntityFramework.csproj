@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\..\data\Next.Data.EntityFramework\Next.Data.EntityFramework.csproj" />
+      <ProjectReference Include="..\Next.Cqrs\Next.Cqrs.csproj" />
+    </ItemGroup>
+    
+</Project>

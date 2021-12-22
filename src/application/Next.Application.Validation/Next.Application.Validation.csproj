@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\..\abstractions\Next.Abstractions.Validation\Next.Abstractions.Validation.csproj" />
+    <ProjectReference Include="..\..\cqrs\Next.Cqrs\Next.Cqrs.csproj" />
+    <ProjectReference Include="..\Next.Application\Next.Application.csproj" />
+  </ItemGroup>
+</Project>

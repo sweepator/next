@@ -1,0 +1,33 @@
+name: Build and Test
+
+on:
+  push:
+    branches: ['develop']
+  pull_request:
+    branches: ['*']
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v2.4.0
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1.9.0
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Restore
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Test
+      run: dotnet test /p:CollectCoverage=true /p:CoverletOutput="../" /p:MergeWith="../coverage.xml" /maxcpucount:1 /p:CoverletOutputFormat=opencover
+
+    - name: CodeCoverage
+      uses: codecov/codecov-action@v2.1.0
+      with:
+        token: ${{ secrets.CODECOVERAGE_TOKEN }}

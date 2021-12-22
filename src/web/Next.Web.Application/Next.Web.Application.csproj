@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <ProjectReference Include="..\..\abstractions\Next.Abstractions.Domain\Next.Abstractions.Domain.csproj" />
+        <ProjectReference Include="..\..\application\Next.Application\Next.Application.csproj" />
+        <ProjectReference Include="..\..\cqrs\Next.Cqrs\Next.Cqrs.csproj" />
+        <ProjectReference Include="..\Next.Web.OpenApi\Next.Web.OpenApi.csproj" />
+        <ProjectReference Include="..\Next.Web.Trace\Next.Web.Trace.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Hellang.Middleware.ProblemDetails" />
+        <PackageReference Include="HotChocolate.AspNetCore" />
+    </ItemGroup>
+    
+</Project>
