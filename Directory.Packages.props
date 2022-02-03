@@ -73,7 +73,7 @@
 
         <PackageVersion Include="Confluent.Kafka" Version="1.8.2"/>
         
-        <PackageVersion Include="CloudNative.CloudEvents.Kafka" Version="2.1.1"/>
+        <PackageVersion Include="CloudNative.CloudEvents.Kafka" Version="2.2.0"/>
         <PackageVersion Include="CloudNative.CloudEvents.SystemTextJson" Version="2.1.1"/>
         
         <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.0.0"/>
