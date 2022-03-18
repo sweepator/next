@@ -26,13 +26,13 @@ jobs:
         dotnet-version: 6.0.x
 
     - name: Install gitversion
-      uses: gittools/actions/gitversion/setup@v0.9.11
+      uses: gittools/actions/gitversion/setup@v0.9.13
       with:
         versionSpec: 5.7.0
 
     - name: Use gitversion
       id:   gitversion
-      uses: gittools/actions/gitversion/execute@v0.9.11
+      uses: gittools/actions/gitversion/execute@v0.9.13
 
     - name: Set environment variables for release
       if: startsWith(github.ref, 'refs/heads/master')
