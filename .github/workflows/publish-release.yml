@@ -86,7 +86,7 @@ jobs:
         run: dotnet pack --configuration Release /p:PackageVersion=${{ env.RELEASE_VERSION }} --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
 
       - name: Upload nuget artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: nupkg
           path: ${{ env.PACKAGE_OUTPUT_DIRECTORY }}/*.symbols.nupkg
