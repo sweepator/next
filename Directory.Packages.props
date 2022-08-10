@@ -45,7 +45,7 @@
         <PackageVersion Include="Hangfire.Core" Version="1.7.28"/>
         <PackageVersion Include="Hangfire.SqlServer" Version="1.7.28"/>
       
-        <PackageVersion Include="Hellang.Middleware.ProblemDetails" Version="6.4.0" />
+        <PackageVersion Include="Hellang.Middleware.ProblemDetails" Version="6.5.1" />
 
         <PackageVersion Include="HotChocolate.AspNetCore" Version="12.7.0" />
         
