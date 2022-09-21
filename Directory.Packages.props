@@ -4,7 +4,7 @@
         <PackageVersion Include="AspNetCore.HealthChecks.NpgSql" Version="6.0.2"/>
         <PackageVersion Include="AspNetCore.HealthChecks.Redis" Version="6.0.3"/>
         <PackageVersion Include="AspNetCore.HealthChecks.MongoDb" Version="6.0.2"/>
-        <PackageVersion Include="AspNetCore.HealthChecks.Kafka" Version="6.0.2"/>
+        <PackageVersion Include="AspNetCore.HealthChecks.Kafka" Version="6.0.3"/>
 
         <PackageVersion Include="AutoMapper" Version="11.0.1"/>
 
