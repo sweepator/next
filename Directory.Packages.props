@@ -55,7 +55,7 @@
         <PackageVersion Include="Serilog" Version="2.10.0"/>
         <PackageVersion Include="Serilog.AspNetCore" Version="5.0.0"/>
         <PackageVersion Include="Serilog.Sinks.File.Header" Version="1.0.2"/>
-        <PackageVersion Include="Serilog.Expressions" Version="3.3.0"/>
+        <PackageVersion Include="Serilog.Expressions" Version="3.4.1"/>
         <PackageVersion Include="Serilog.Extensions.Logging" Version="3.1.0"/>
         <PackageVersion Include="Serilog.Sinks.ElasticSearch" Version="8.4.1"/>
         <PackageVersion Include="Serilog.Enrichers.Thread" Version="3.1.0"/>
