@@ -62,7 +62,7 @@
         <PackageVersion Include="Serilog.Sinks.Console" Version="4.0.1"/>
         <PackageVersion Include="Serilog.Settings.Configuration" Version="3.3.0"/>
 
-        <PackageVersion Include="StackExchange.Redis" Version="2.5.43"/>
+        <PackageVersion Include="StackExchange.Redis" Version="2.6.70"/>
 
         <PackageVersion Include="shortid" Version="3.0.1"/>
 
