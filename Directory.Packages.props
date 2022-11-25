@@ -35,7 +35,7 @@
         <PackageVersion Include="MongoDB.Driver" Version="2.15.0"/>
         
         <PackageVersion Include="dbup-sqlserver" Version="4.5.0"/>
-        <PackageVersion Include="dbup-postgresql" Version="4.5.0"/>
+        <PackageVersion Include="dbup-postgresql" Version="5.0.8"/>
 
         <PackageVersion Include="Dapper" Version="2.0.123"/>
 
