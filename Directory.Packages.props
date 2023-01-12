@@ -66,7 +66,7 @@
 
         <PackageVersion Include="shortid" Version="3.0.1"/>
 
-        <PackageVersion Include="Swashbuckle.AspNetCore " Version="6.3.0"/>
+        <PackageVersion Include="Swashbuckle.AspNetCore " Version="6.5.0"/>
         <PackageVersion Include="Swashbuckle.AspNetCore.ReDoc" Version="6.3.0"/>
 
         <PackageVersion Include="NBuilder" Version="6.1.0"/>
