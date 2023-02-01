@@ -41,7 +41,7 @@
 
         <PackageVersion Include="FluentValidation" Version="10.4.0"/>
       
-        <PackageVersion Include="Hangfire.AspNetCore" Version="1.7.28"/>
+        <PackageVersion Include="Hangfire.AspNetCore" Version="1.7.33"/>
         <PackageVersion Include="Hangfire.Core" Version="1.7.28"/>
         <PackageVersion Include="Hangfire.SqlServer" Version="1.7.28"/>
       
